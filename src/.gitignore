@@ -1,0 +1,24 @@
+# Ignora i file di output compilati
+*.js
+*.js.map
+*.d.ts
+
+# Cartella della build
+dist/
+build/
+
+# Dipendenze Node.js
+node_modules/
+
+# Configurazioni di editor (VS Code, IntelliJ, ecc.)
+.vscode/
+.idea/
+
+# File temporanei
+*.log
+*.tmp
+*.tsbuildinfo
+
+# File di sistema
+.DS_Store
+Thumbs.db
