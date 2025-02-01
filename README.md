@@ -37,9 +37,16 @@ Questo progetto è una simulazione di un sistema che consente a professionisti d
 
 Il progetto è sviluppato in TypeScript, un superset di JavaScript che aggiunge tipizzazione statica e altre funzionalità.
 
-🚀 Clona il repository:
+🚀### Installazione
+ Clona il repository:
 
 git clone https://github.com/julysway/Progetto-Typescript-di-Giuliana-Magri
 
+npm install
+
 🤝
 Se desideri contribuire a questo progetto, sentiti libero di inviare una pull request o segnalare problemi tramite le issue.
+
+🔗 Link Utili
+
+https://codepen.io/julysway/pen/KwPYzyN?editors=1111
