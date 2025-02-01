@@ -39,8 +39,7 @@ Il progetto è sviluppato in TypeScript, un superset di JavaScript che aggiunge 
 
 🚀 Clona il repository:
 
-git clone https://github.com/julysway/Progetto-Typescript-Voci-Connessione-tra-Professioniste-dei-Media-Formazione-e-Piattaforme
-
+git clone https://github.com/julysway/Progetto-Typescript-di-Giuliana-Magri
 
 🤝
 Se desideri contribuire a questo progetto, sentiti libero di inviare una pull request o segnalare problemi tramite le issue.
