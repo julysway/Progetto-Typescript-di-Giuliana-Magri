@@ -1,0 +1,23 @@
+{
+  "name": "progetto-typescript-di-giuliana-magri",
+  "version": "1.0.0",
+  "description": "Questo progetto è una simulazione di un sistema che consente a professionisti del settore media di partecipare a programmi di formazione e pubblicare contenuti su diverse piattaforme. Il sistema è composto da diverse **interfacce** e **classi**, che permettono la gestione dei professionisti, dei programmi di formazione e delle piattaforme di pubblicazione.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "verify": "npx tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/julysway/Progetto-Typescript-di-Giuliana-Magri.git"
+  },
+  "author": "Giuliana Magrì",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/julysway/Progetto-Typescript-di-Giuliana-Magri/issues"
+  },
+  "homepage": "https://github.com/julysway/Progetto-Typescript-di-Giuliana-Magri#readme",
+  "devDependencies": {
+    "typescript": "^5.7.3"
+  }
+}

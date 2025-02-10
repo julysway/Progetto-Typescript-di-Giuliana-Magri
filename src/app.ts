@@ -1,128 +1,126 @@
-//#region INTERFACCE
-//interfaccia che definisce le professioniste
-interface IProfessionistaMedia {
+//#region INTERFACES
+// Interface defining media professionals
+interface IMediaProfessional {
 
-    nome: string;
-    cognome: string;
-    specializzazione: string;
-    esperienza: number;
-    interessi: string[];
+    firstName: string;
+    lastName: string;
+    specialization: string;
+    experience: number;
+    interests: string[];
 
-    partecipaProgramma(programma: IProgrammaFormazione): void
+    enrollInProgram(program: ITrainingProgram): void;
 }
 
-//interfaccia che definisce il programma di formazione
-interface IProgrammaFormazione {
+// Interface defining the training program
+interface ITrainingProgram {
 
-    titolo: string;
-    descrizione: string;
-    specializzazione: string;
-    durata: number;
-    elencoPartecipanti: (IProfessionistaMedia[]);
+    title: string;
+    description: string;
+    specialization: string;
+    duration: number;
+    participantsList: IMediaProfessional[];
 
-    aggiungiPartecipante(professionista: IProfessionistaMedia): void
+    addParticipant(professional: IMediaProfessional): void;
 }
 
-//interfaccia che definisce la piattaforma di pubblicazione
-interface IPiattaforma{
+// Interface defining the publishing platform
+interface IPublishingPlatform {
 
-    nome: string;
-    tipo: string[];
-    descrizione: string;
-    categorieContenuto: string[];
+    name: string;
+    types: string[];
+    description: string;
+    contentCategories: string[];
 
-    pubblicaContenuto(professionista: IProfessionistaMedia, contenuto: string): void
+    publishContent(professional: IMediaProfessional, content: string): void;
 }
 //#endregion
 
-//#region CLASSI
-//classe ProfessionistaMedia che implementa l'interfaccia IProfessionistaMedia
-class ProfessionistaMedia implements IProfessionistaMedia{
+//#region CLASSES
+// Class MediaProfessional implementing IMediaProfessional interface
+class MediaProfessional implements IMediaProfessional {
 
-    nome: string;
-    cognome: string;
-    specializzazione: string;
-    esperienza: number;
-    interessi: string[];
+    firstName: string;
+    lastName: string;
+    specialization: string;
+    experience: number;
+    interests: string[];
 
-    constructor(nome: string, cognome: string, specializzazione: string, esperienza: number, interessi: string[]) {
-        this.nome = nome;
-        this.cognome = cognome;
-        this.specializzazione = specializzazione;
-        this.esperienza = esperienza;
-        this.interessi = interessi;
+    constructor(firstName: string, lastName: string, specialization: string, experience: number, interests: string[]) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.specialization = specialization;
+        this.experience = experience;
+        this.interests = interests;
     }
 
-    partecipaProgramma(programma: IProgrammaFormazione): void {
-        programma.aggiungiPartecipante(this);
-    }   
-
-}
-
-//classe ProgrammaFormazione che implementa l'interfaccia IProgrammaFormazione
-class ProgrammaFormazione implements IProgrammaFormazione {
-
-    titolo: string;
-    descrizione: string;
-    specializzazione: string;
-    durata: number;
-    elencoPartecipanti: (IProfessionistaMedia[]);
-
-    constructor(titolo: string, descrizione: string, specializzazione: string, durata: number) {
-        this.titolo = titolo;
-        this.descrizione = descrizione;
-        this.specializzazione = specializzazione;
-        this.durata = durata;
-        this.elencoPartecipanti = [];
-    }
-
-    aggiungiPartecipante(professionista: IProfessionistaMedia): void {
-        this.elencoPartecipanti.push(professionista);
+    enrollInProgram(program: ITrainingProgram): void {
+        program.addParticipant(this);
     }
 }
 
-//classe Piattaforma che implementa l'interfaccia IPiattaforma
-class Piattaforma implements IPiattaforma {
-    nome: string;
-    tipo: string[];
-    descrizione: string;
-    categorieContenuto: string[];
+// Class TrainingProgram implementing ITrainingProgram interface
+class TrainingProgram implements ITrainingProgram {
 
-    constructor(nome: string, tipo: string[], descrizione: string, categorieContenuto: string[]) {
-        this.nome = nome;
-        this.tipo = tipo;
-        this.descrizione = descrizione;
-        this.categorieContenuto = categorieContenuto;
+    title: string;
+    description: string;
+    specialization: string;
+    duration: number;
+    participantsList: IMediaProfessional[];
+
+    constructor(title: string, description: string, specialization: string, duration: number) {
+        this.title = title;
+        this.description = description;
+        this.specialization = specialization;
+        this.duration = duration;
+        this.participantsList = [];
     }
 
-    pubblicaContenuto(professionista: IProfessionistaMedia, contenuto: string): void {
-        console.log(`Pubblicando contenuto da ${professionista.nome} ${professionista.cognome}: ${contenuto}`);
+    addParticipant(professional: IMediaProfessional): void {
+        this.participantsList.push(professional);
+    }
+}
 
+// Class PublishingPlatform implementing IPublishingPlatform interface
+class PublishingPlatform implements IPublishingPlatform {
+    name: string;
+    types: string[];
+    description: string;
+    contentCategories: string[];
+
+    constructor(name: string, types: string[], description: string, contentCategories: string[]) {
+        this.name = name;
+        this.types = types;
+        this.description = description;
+        this.contentCategories = contentCategories;
+    }
+
+    publishContent(professional: IMediaProfessional, content: string): void {
+        console.log(`Publishing content by ${professional.firstName} ${professional.lastName}: ${content}`);
     }
 }   
 //#endregion
 
-//#region ESECUZIONE
-// Creazione di alcune professioniste nei media
-const professionista1 = new ProfessionistaMedia("Anna", "Tasso", "Giornalismo", 5, ["Scrittura", "Video editing"]);
-const professionista2 = new ProfessionistaMedia("Laura", "Bianchini", "Produzione video", 3, ["Regia", "Montaggio"]);
-const professionista3 = new ProfessionistaMedia("Marta", "Guardiola", "Fotografia", 7, ["Reportage", "Post-produzione"]);
+//#region EXECUTION
+// Creating some media professionals
+const professional1 = new MediaProfessional("Anna", "Tasso", "Journalism", 5, ["Writing", "Video editing"]);
+const professional2 = new MediaProfessional("Laura", "Bianchini", "Video production", 3, ["Directing", "Editing"]);
+const professional3 = new MediaProfessional("Marta", "Guardiola", "Photography", 7, ["Reportage", "Post-production"]);
 
-// Creazione di programmi di formazione
-const mentorship = new ProgrammaFormazione("Mentorship per giovani giornaliste", "Un programma di mentorship per aspiranti giornaliste", "Giornalismo", 6);
-const sviluppoProfessionale = new ProgrammaFormazione("Sviluppo professionale nel settore media", "Un programma per migliorare le competenze", "Media", 8);
-const specializzazioneTecnica = new ProgrammaFormazione("Masterclass in montaggio video", "Approfondimento sulle tecniche avanzate", "Produzione video", 10);
+// Creating training programs
+const mentorship = new TrainingProgram("Mentorship for Young Journalists", "A mentorship program for aspiring journalists", "Journalism", 6);
+const professionalDevelopment = new TrainingProgram("Professional Development in the Media Industry", "A program to enhance skills", "Media", 8);
+const technicalSpecialization = new TrainingProgram("Masterclass in Video Editing", "Advanced techniques deep dive", "Video Production", 10);
 
-// Le professioniste si iscrivono ai programmi
-professionista1.partecipaProgramma(mentorship);
-professionista2.partecipaProgramma(specializzazioneTecnica);
-professionista3.partecipaProgramma(sviluppoProfessionale);
+// Professionals enroll in programs
+professional1.enrollInProgram(mentorship);
+professional2.enrollInProgram(technicalSpecialization);
+professional3.enrollInProgram(professionalDevelopment);
 
-// Creazione di piattaforme di pubblicazione
-const piattaforma1 = new Piattaforma("MediaHub", ["Web", "Social Media"], "Piattaforma per la pubblicazione di contenuti multimediali", ["Giornalismo", "Fotografia", "Produzione video"]);
-const piattaforma2 = new Piattaforma("DiversityChannel", ["TV", "Streaming"], "Canale dedicato alla diversità nel settore dei media", ["Talk show", "Documentari"]);
+// Creating publishing platforms
+const platform1 = new PublishingPlatform("MediaHub", ["Web", "Social Media"], "Platform for publishing multimedia content", ["Journalism", "Photography", "Video Production"]);
+const platform2 = new PublishingPlatform("DiversityChannel", ["TV", "Streaming"], "Channel dedicated to diversity in the media industry", ["Talk shows", "Documentaries"]);
 
-// Pubblicazione di contenuti da parte delle professioniste
-piattaforma1.pubblicaContenuto(professionista1, "Un reportage esclusivo sulle nuove tendenze del giornalismo");
-piattaforma2.pubblicaContenuto(professionista2, "Un documentario sulla parità di genere nei media");
+// Publishing content by professionals
+platform1.publishContent(professional1, "An exclusive report on new journalism trends");
+platform2.publishContent(professional2, "A documentary on gender equality in the media");
 //#endregion
